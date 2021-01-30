@@ -4,7 +4,9 @@ var camera
 var targets
 var target
 var default
-var zoomset = 4
+var zoomset = 2
+var shrinkset = .5
+var mods
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -14,13 +16,15 @@ func _ready():
 	
 	if is_network_master():
 		visible = true
+	else:
+		visible = false
 
 
-	default = get_scale()
+	default = get_scale() * 0.5
 	subject = get_parent()
 	camera = subject.get_node("Camera2D")
 	set_as_toplevel(true)
-
+	mods = get_self_modulate()
 
 func pointing():
 	return subject.get_rotation()
@@ -59,16 +63,25 @@ func _process(delta):
 		$arrow.set_rotation(pointing())
 		$gravity.set_rotation(gravity())
 		$target.set_rotation(target())
-	
 	#turns the heading arrow on when zoomed out, and removes it when zoomed in
 	if camera.get_zoom().y > zoomset:
 		$arrow.set_visible(true)
 		$target_reticule.set_visible(true)
-		set_scale((camera.get_zoom() / Vector2(zoomset,zoomset)) * default)
-		$target_reticule.set_scale((camera.get_zoom() / Vector2(zoomset,zoomset)) * default)
 	else:
 		$arrow.set_visible(false)
 		$target_reticule.set_visible(false)
+
+
+	if camera.get_zoom().y > shrinkset:
+		# when its zoomed out
+		set_scale((camera.get_zoom() / Vector2(shrinkset,shrinkset)) * default)
+		$target_reticule.set_scale((camera.get_zoom() / Vector2(shrinkset,shrinkset)) * default)
+		mods = get_modulate()
+		mods.a = 0.5
+		set_modulate(mods)
+	else:
+		mods = get_modulate()
+		mods.a = 0.1
+		set_modulate(mods)
 		$target_reticule.set_scale(default)
 		set_scale(default)
-

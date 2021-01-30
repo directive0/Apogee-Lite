@@ -6,6 +6,8 @@ var camera
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if is_network_master():
+		visible = false
 	camera = get_tree().get_nodes_in_group("camera")[0]
 	set_as_toplevel(true)
 	
@@ -17,7 +19,7 @@ func _process(delta):
 	set_scale(zoom)
 	var target = get_parent().get_position()
 	target.y += 55
-	target.x -= (get_size().x/2)
+	target.x -= ((get_size().x * get_scale().x)/2)
 	set_position(target)
 
 #	pass

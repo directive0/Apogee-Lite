@@ -60,8 +60,10 @@ load_path = "res://.import/spot.png-61850f44b146466ea53b3662faa40a2d.stex"
 input_pickable = false
 space_override = 1
 gravity_point = true
-gravity_distance_scale = 0.001
-gravity = 40.0
+gravity_distance_scale = 0.005
+gravity = 20.0
+linear_damp = 0.0
+angular_damp = 0.0
 collision_layer = 3
 collision_mask = 3
 

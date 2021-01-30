@@ -7,6 +7,10 @@ var from_player
 var fuel = 100
 var hull = 100
 var planet
+var gen_rate = 0.01
+
+
+var deployer
 
 func _ready():
 	$expire.start()
@@ -20,6 +24,7 @@ func _physics_process(delta):
 			if body.is_in_group("planet"):
 				planet = body
 				orbiting += 1
+				deployer.fuel += gen_rate
 				
 		if orbiting > 0:
 			if lastcheck == false:
@@ -28,6 +33,7 @@ func _physics_process(delta):
 				generating = true
 				$generate.start()
 				lastcheck = true
+				
 		else:
 			if lastcheck == true:
 				#print("no planet detected!")

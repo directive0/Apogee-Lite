@@ -17,16 +17,17 @@ var prev_bombing = false
 var prev_missiling = false
 var bomb_index = 0
 var missile_index = 0
-var spinforce = 15
+var spinforce = 2
 var brake_spin = 0.1
 var rotvel = 0
 var loaded_weapon = 0
 var throttle = 0
+var plume_scale = .1
 
 
 var hulltype 
 var exploded = false
-var burnrate = 0.1
+var burnrate = 0.3
 var fuel = 100
 var current_fuel
 var max_fuel = 100
@@ -98,6 +99,7 @@ sync func deploy(bomb_name, pos, by_who):
 		bomb = missile_object.instance()
 	if loaded_weapon == 1:
 		bomb = station_object.instance()
+		bomb.deployer = self
 		
 	bomb.set_name(bomb_name) # Ensure unique name for the bomb
 	bomb.position = pos
@@ -147,12 +149,13 @@ func _integrate_forces(state):
 func _process(delta):
 	if is_network_master():
 		query_target()
-
+	if fuel > max_fuel:
+		fuel = max_fuel
 
 
 func _physics_process(delta):
 	
-	print(rotation)
+
 	# zero out the motion and torque settings for this frame
 	var motion = 0.0
 	var torque = 0.0
@@ -266,10 +269,10 @@ func throttle():
 	if engine_on:
 		$main_hull/plume.set_visible(true)
 		if throttle > 0:
-			$main_hull/plume.scale.y = 0.239 * (throttle / 100)
+			$main_hull/plume.scale.y = plume_scale * (throttle / 1000)
 	else:
 		$main_hull/plume.set_visible(false)
-		$main_hull/plume.scale.y = 0.239
+		$main_hull/plume.scale.y = plume_scale
 		
 func burn():
 	var motion = 0
@@ -282,17 +285,23 @@ func move_player():
 	engine_on = false
 
 	if Input.is_action_pressed("move_up"):
-		fuel -= burnrate
-		motion += 3
-		engine_on = true
+		if fuel > 0:
+			fuel -= burnrate
+			motion += 3
+			engine_on = true
+		else:
+			fuel = 0
 		
 	if Input.is_action_pressed("move_down"):
 		pass
 		
 	if throttle > 0:
-		engine_on = true
-		motion += 3 * (throttle / 100)
-		fuel -= burnrate * (throttle / 100)
+		if fuel > 0:
+			engine_on = true
+			motion += 3 * (throttle / 100)
+			fuel -= burnrate * (throttle / 100)
+		else:
+			fuel = 0
 		
 	return motion
 
@@ -337,7 +346,7 @@ func check_damage():
 
 			if hull == 0:
 				explode()
-				var touching = $Area2D.get_overlapping_areas()
+				#var touching = $Area2D.get_overlapping_areas()
 
 		if item.is_in_group("planet"):
 			fuel += 1

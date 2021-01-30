@@ -16,6 +16,15 @@
 [ext_resource path="res://scenes/throttle.tscn" type="PackedScene" id=14]
 [ext_resource path="res://assets/deploy.png" type="Texture" id=15]
 
+[sub_resource type="CircleShape2D" id=2]
+radius = 525.0
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 525.0
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 525.0
+
 [sub_resource type="GDScript" id=1]
 script/source = "extends VBoxContainer
 export(int, \"velocity\", \"damage\", \"fuel\") var indicator_type
@@ -58,15 +67,6 @@ func _process(delta):
 #func _process(delta):
 #	pass
 "
-
-[sub_resource type="CircleShape2D" id=2]
-radius = 525.0
-
-[sub_resource type="CircleShape2D" id=3]
-radius = 525.0
-
-[sub_resource type="CircleShape2D" id=4]
-radius = 525.0
 
 [node name="UI_Overlay" type="CanvasLayer" groups=[
 "UI",
@@ -112,207 +112,30 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 20.0
 margin_bottom = 78.0
+rect_scale = Vector2( 0.992734, 1.23871 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Control3" type="Control" parent="Control/VBoxContainer/topbar/HBoxContainer"]
-margin_right = 542.0
+margin_right = 737.0
 margin_bottom = 214.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Control" type="Control" parent="Control/VBoxContainer/topbar/HBoxContainer"]
-margin_left = 546.0
-margin_right = 1088.0
+margin_left = 741.0
+margin_right = 1478.0
 margin_bottom = 214.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Control2" type="Control" parent="Control/VBoxContainer/topbar/HBoxContainer"]
-margin_left = 1092.0
-margin_right = 1634.0
-margin_bottom = 214.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="Control/VBoxContainer/topbar/HBoxContainer"]
-margin_left = 1638.0
+margin_left = 1482.0
 margin_right = 2220.0
 margin_bottom = 214.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/separation = 27
-
-[node name="Indicator6" type="VBoxContainer" parent="Control/VBoxContainer/topbar/HBoxContainer/HBoxContainer2"]
-margin_right = 176.0
-margin_bottom = 214.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-script = ExtResource( 8 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="item_heading" type="Label" parent="Control/VBoxContainer/topbar/HBoxContainer/HBoxContainer2/Indicator6"]
-margin_right = 176.0
-margin_bottom = 33.0
-size_flags_horizontal = 3
-size_flags_vertical = 6
-custom_fonts/font = ExtResource( 2 )
-custom_colors/font_color = Color( 0.984314, 0.784314, 0.00392157, 1 )
-text = "Velocity"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="progress" type="TextureProgress" parent="Control/VBoxContainer/topbar/HBoxContainer/HBoxContainer2/Indicator6"]
-modulate = Color( 0.984314, 0.784314, 0.00392157, 1 )
-margin_left = 18.0
-margin_top = 37.0
-margin_right = 158.0
-margin_bottom = 177.0
-rect_min_size = Vector2( 0, 100 )
-size_flags_horizontal = 4
-size_flags_vertical = 3
-max_value = 1200.0
-value = 50.0
-texture_under = ExtResource( 6 )
-texture_progress = ExtResource( 7 )
-fill_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="label" type="Label" parent="Control/VBoxContainer/topbar/HBoxContainer/HBoxContainer2/Indicator6"]
-margin_top = 181.0
-margin_right = 176.0
-margin_bottom = 214.0
-size_flags_vertical = 3
-custom_fonts/font = ExtResource( 2 )
-custom_colors/font_color = Color( 0.984314, 0.784314, 0.00392157, 1 )
-text = "Test 100"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Indicator5" type="VBoxContainer" parent="Control/VBoxContainer/topbar/HBoxContainer/HBoxContainer2"]
-margin_left = 203.0
-margin_right = 379.0
-margin_bottom = 214.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-script = SubResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-indicator_type = 1
-
-[node name="item_heading" type="Label" parent="Control/VBoxContainer/topbar/HBoxContainer/HBoxContainer2/Indicator5"]
-margin_right = 176.0
-margin_bottom = 33.0
-size_flags_horizontal = 3
-size_flags_vertical = 6
-custom_fonts/font = ExtResource( 2 )
-custom_colors/font_color = Color( 0.984314, 0.784314, 0.00392157, 1 )
-text = "Hull"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="progress" type="TextureProgress" parent="Control/VBoxContainer/topbar/HBoxContainer/HBoxContainer2/Indicator5"]
-modulate = Color( 0.984314, 0.784314, 0.00392157, 1 )
-margin_left = 18.0
-margin_top = 37.0
-margin_right = 158.0
-margin_bottom = 177.0
-rect_min_size = Vector2( 0, 100 )
-size_flags_horizontal = 4
-size_flags_vertical = 3
-value = 50.0
-texture_under = ExtResource( 6 )
-texture_progress = ExtResource( 7 )
-fill_mode = 4
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="label" type="Label" parent="Control/VBoxContainer/topbar/HBoxContainer/HBoxContainer2/Indicator5"]
-margin_top = 181.0
-margin_right = 176.0
-margin_bottom = 214.0
-size_flags_vertical = 3
-custom_fonts/font = ExtResource( 2 )
-custom_colors/font_color = Color( 0.984314, 0.784314, 0.00392157, 1 )
-text = "Test 100"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Indicator4" type="VBoxContainer" parent="Control/VBoxContainer/topbar/HBoxContainer/HBoxContainer2"]
-margin_left = 406.0
-margin_right = 582.0
-margin_bottom = 214.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-indicator_type = 2
-
-[node name="item_heading" type="Label" parent="Control/VBoxContainer/topbar/HBoxContainer/HBoxContainer2/Indicator4"]
-margin_right = 176.0
-margin_bottom = 33.0
-size_flags_horizontal = 3
-size_flags_vertical = 6
-custom_fonts/font = ExtResource( 2 )
-custom_colors/font_color = Color( 0.984314, 0.784314, 0.00392157, 1 )
-text = "Fuel"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="progress" type="TextureProgress" parent="Control/VBoxContainer/topbar/HBoxContainer/HBoxContainer2/Indicator4"]
-modulate = Color( 0.984314, 0.784314, 0.00392157, 1 )
-margin_left = 18.0
-margin_top = 37.0
-margin_right = 158.0
-margin_bottom = 177.0
-rect_min_size = Vector2( 0, 100 )
-size_flags_horizontal = 4
-size_flags_vertical = 3
-value = 50.0
-texture_under = ExtResource( 6 )
-texture_progress = ExtResource( 7 )
-fill_mode = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="label" type="Label" parent="Control/VBoxContainer/topbar/HBoxContainer/HBoxContainer2/Indicator4"]
-margin_top = 181.0
-margin_right = 176.0
-margin_bottom = 214.0
-size_flags_vertical = 3
-custom_fonts/font = ExtResource( 2 )
-custom_colors/font_color = Color( 0.984314, 0.784314, 0.00392157, 1 )
-text = "Test 100"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="midbar" type="HBoxContainer" parent="Control/VBoxContainer"]
 margin_top = 140.0
@@ -345,6 +168,32 @@ margin_bottom = 800.0
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="Control" type="Control" parent="Control/VBoxContainer/midbar/control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 460.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Control/VBoxContainer/midbar/control/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.184314, 0.192157, 0, 1 )
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/midbar/control/Control/ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_scale = Vector2( 1.00135, 0.998825 )
+custom_fonts/font = ExtResource( 2 )
+text = "You are out of fuel. Self Destruct?"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="botbar" type="Control" parent="Control/VBoxContainer"]
 margin_top = 944.0
@@ -434,6 +283,190 @@ margin_left = 34.443
 margin_top = -912.864
 margin_right = -1648.56
 margin_bottom = -848.864
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1617.0
+margin_top = 21.0
+margin_right = -21.0
+margin_bottom = -845.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 27
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Indicator6" type="VBoxContainer" parent="HBoxContainer2"]
+margin_right = 176.0
+margin_bottom = 214.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="item_heading" type="Label" parent="HBoxContainer2/Indicator6"]
+margin_right = 176.0
+margin_bottom = 33.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.984314, 0.784314, 0.00392157, 1 )
+text = "Velocity"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="progress" type="TextureProgress" parent="HBoxContainer2/Indicator6"]
+modulate = Color( 0.984314, 0.784314, 0.00392157, 1 )
+margin_left = 18.0
+margin_top = 37.0
+margin_right = 158.0
+margin_bottom = 177.0
+rect_min_size = Vector2( 0, 100 )
+size_flags_horizontal = 4
+size_flags_vertical = 3
+max_value = 1200.0
+value = 50.0
+texture_under = ExtResource( 6 )
+texture_progress = ExtResource( 7 )
+fill_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="label" type="Label" parent="HBoxContainer2/Indicator6"]
+margin_top = 181.0
+margin_right = 176.0
+margin_bottom = 214.0
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.984314, 0.784314, 0.00392157, 1 )
+text = "Test 100"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Indicator4" type="VBoxContainer" parent="HBoxContainer2"]
+margin_left = 203.0
+margin_right = 379.0
+margin_bottom = 214.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+indicator_type = 2
+
+[node name="item_heading" type="Label" parent="HBoxContainer2/Indicator4"]
+margin_right = 176.0
+margin_bottom = 33.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.984314, 0.784314, 0.00392157, 1 )
+text = "Fuel"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="progress" type="TextureProgress" parent="HBoxContainer2/Indicator4"]
+modulate = Color( 0.984314, 0.784314, 0.00392157, 1 )
+margin_left = 18.0
+margin_top = 37.0
+margin_right = 158.0
+margin_bottom = 177.0
+rect_min_size = Vector2( 0, 100 )
+size_flags_horizontal = 4
+size_flags_vertical = 3
+value = 50.0
+texture_under = ExtResource( 6 )
+texture_progress = ExtResource( 7 )
+fill_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="label" type="Label" parent="HBoxContainer2/Indicator4"]
+margin_top = 181.0
+margin_right = 176.0
+margin_bottom = 214.0
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.984314, 0.784314, 0.00392157, 1 )
+text = "Test 100"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Indicator5" type="VBoxContainer" parent="HBoxContainer2"]
+margin_left = 406.0
+margin_right = 582.0
+margin_bottom = 214.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+indicator_type = 1
+
+[node name="item_heading" type="Label" parent="HBoxContainer2/Indicator5"]
+margin_right = 176.0
+margin_bottom = 33.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.984314, 0.784314, 0.00392157, 1 )
+text = "Hull"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="progress" type="TextureProgress" parent="HBoxContainer2/Indicator5"]
+modulate = Color( 0.984314, 0.784314, 0.00392157, 1 )
+margin_left = 18.0
+margin_top = 37.0
+margin_right = 158.0
+margin_bottom = 177.0
+rect_min_size = Vector2( 0, 100 )
+size_flags_horizontal = 4
+size_flags_vertical = 3
+value = 50.0
+texture_under = ExtResource( 6 )
+texture_progress = ExtResource( 7 )
+fill_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="label" type="Label" parent="HBoxContainer2/Indicator5"]
+margin_top = 181.0
+margin_right = 176.0
+margin_bottom = 214.0
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.984314, 0.784314, 0.00392157, 1 )
+text = "Test 100"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="weapon_select" parent="." instance=ExtResource( 1 )]
 modulate = Color( 0.984314, 0.784314, 0.00392157, 1 )
