@@ -1,0 +1,106 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/VCR_Big.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/VCR_Small.tres" type="DynamicFont" id=2]
+[ext_resource path="res://script/info_pane.gd" type="Script" id=3]
+
+[node name="info_pane" type="ColorRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -604.0
+margin_top = -383.0
+margin_right = 604.0
+margin_bottom = 383.0
+color = Color( 0.164706, 0.164706, 0.164706, 1 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Main" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Main"]
+margin_right = 1208.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+size_flags_horizontal = 3
+color = Color( 0.984314, 0.784314, 0.00392157, 1 )
+
+[node name="Label" type="Label" parent="Main/ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "About AM"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="Main"]
+margin_top = 54.0
+margin_right = 1208.0
+margin_bottom = 165.0
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="Label" parent="Main"]
+margin_top = 169.0
+margin_right = 1208.0
+margin_bottom = 418.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 2 )
+text = "Apogee Mobile presented by Skurfsoft 2020.
+
+Code, Images, Concept By:
+Chris Barrett
+
+Music By:
+DAD BEATz"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control2" type="Control" parent="Main"]
+margin_top = 422.0
+margin_right = 1208.0
+margin_bottom = 533.0
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="Main"]
+margin_top = 537.0
+margin_right = 1208.0
+margin_bottom = 648.0
+size_flags_vertical = 3
+
+[node name="Control3" type="Control" parent="Main"]
+margin_top = 652.0
+margin_right = 1208.0
+margin_bottom = 766.0
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Main/Control3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="okay_info" type="Button" parent="Main/Control3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 1 )
+text = "Okay"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Main/Control3/okay_info" to="." method="_on_okay_info_pressed"]

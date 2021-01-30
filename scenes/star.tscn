@@ -1,0 +1,109 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://assets/spot.png" type="Texture" id=1]
+[ext_resource path="res://assets/hardspot.png" type="Texture" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 241249.0
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 879.624
+
+[sub_resource type="Gradient" id=3]
+colors = PoolColorArray( 1, 1, 1, 1, 0, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=4]
+gradient = SubResource( 3 )
+
+[sub_resource type="ParticlesMaterial" id=5]
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 1000.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 0.6
+color_ramp = SubResource( 4 )
+hue_variation = 0.18
+
+[sub_resource type="Curve" id=6]
+_data = [ Vector2( 0, 0.107235 ), 0.0, 4.23214, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=7]
+curve = SubResource( 6 )
+
+[sub_resource type="ParticlesMaterial" id=8]
+emission_shape = 1
+emission_sphere_radius = 700.0
+flag_disable_z = true
+direction = Vector3( 0, 0, 0 )
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = -1.0
+initial_velocity_random = 1.0
+angular_velocity = 0.68
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 0.36
+scale_curve = SubResource( 7 )
+color_ramp = SubResource( 4 )
+hue_variation = 0.29
+
+[sub_resource type="StreamTexture" id=9]
+flags = 4
+load_path = "res://.import/spot.png-61850f44b146466ea53b3662faa40a2d.stex"
+
+[node name="Star" type="Node2D" groups=[
+"star",
+]]
+
+[node name="gravity" type="Area2D" parent="."]
+input_pickable = false
+space_override = 1
+gravity_point = true
+gravity_distance_scale = 0.001
+gravity = 40.0
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="gravity"]
+visible = false
+shape = SubResource( 1 )
+
+[node name="surface" type="Area2D" parent="." groups=[
+"corona",
+]]
+input_pickable = false
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="surface"]
+shape = SubResource( 2 )
+
+[node name="Particles2D" type="Particles2D" parent="."]
+self_modulate = Color( 0.8, 0.8, 0.8, 0.686275 )
+amount = 40
+lifetime = 1.28
+preprocess = 4.0
+speed_scale = 0.29
+randomness = 1.0
+process_material = SubResource( 5 )
+texture = ExtResource( 1 )
+
+[node name="spot" type="Sprite" parent="."]
+self_modulate = Color( 1, 1, 0.952941, 0.180392 )
+scale = Vector2( 12.7132, 12.7132 )
+texture = ExtResource( 1 )
+
+[node name="hardspot" type="Sprite" parent="."]
+self_modulate = Color( 1, 0.796078, 0, 1 )
+scale = Vector2( 1.79409, 1.79409 )
+texture = ExtResource( 2 )
+
+[node name="Particles2D2" type="Particles2D" parent="."]
+self_modulate = Color( 0, 0, 0, 0.305882 )
+amount = 40
+lifetime = 1.28
+speed_scale = 0.01
+randomness = 1.0
+process_material = SubResource( 8 )
+texture = SubResource( 9 )

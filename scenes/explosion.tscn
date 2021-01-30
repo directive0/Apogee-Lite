@@ -1,0 +1,74 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://script/explosion.gd" type="Script" id=1]
+[ext_resource path="res://assets/spot.png" type="Texture" id=2]
+[ext_resource path="res://assets/explosive_decompression.wav" type="AudioStream" id=3]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0, 0.0592593, 0.622222, 0.992593 )
+colors = PoolColorArray( 0.945312, 0.332336, 0, 1, 0.945312, 1, 0, 1, 1, 1, 1, 0.373134, 0.292969, 0.292969, 0.292969, 0 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 1000.0
+initial_velocity_random = 0.51
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+color_ramp = SubResource( 2 )
+
+[sub_resource type="Gradient" id=4]
+offsets = PoolRealArray( 0, 0.592593, 1 )
+colors = PoolColorArray( 0.991055, 1, 0.00390625, 1, 1, 0.172549, 0.172549, 1, 0, 0, 0, 0 )
+
+[sub_resource type="GradientTexture" id=5]
+gradient = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 2.0
+initial_velocity_random = 1.0
+angular_velocity = 720.0
+angular_velocity_random = 0.25
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle = 66.2
+angle_random = 1.0
+scale = 0.01
+color_ramp = SubResource( 5 )
+anim_speed_random = 0.74
+
+[node name="explosion" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="sparks" type="Particles2D" parent="."]
+emitting = false
+amount = 3
+lifetime = 3.0
+one_shot = true
+explosiveness = 1.0
+randomness = 0.75
+local_coords = false
+process_material = SubResource( 3 )
+
+[node name="fire" type="Particles2D" parent="."]
+emitting = false
+amount = 300
+lifetime = 95.61
+one_shot = true
+speed_scale = 61.7
+explosiveness = 0.92
+randomness = 0.45
+local_coords = false
+process_material = SubResource( 6 )
+texture = ExtResource( 2 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+autoplay = true

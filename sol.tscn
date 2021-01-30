@@ -1,0 +1,126 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://montserrat.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://scenes/sol_system.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/roche_limit.ogg" type="AudioStream" id=3]
+[ext_resource path="res://script/music_player.gd" type="Script" id=4]
+[ext_resource path="res://scenes/asteroid.tscn" type="PackedScene" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 44
+font_data = ExtResource( 1 )
+
+[node name="world" type="Node2D"]
+
+[node name="winner" type="Label" parent="."]
+visible = false
+margin_right = 1031.0
+margin_bottom = 617.0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
+custom_constants/shadow_as_outline = 1
+text = "THE WINNER IS:
+YOU"
+align = 1
+valign = 1
+
+[node name="exit_game" type="Button" parent="winner"]
+margin_left = 384.0
+margin_top = 408.0
+margin_right = 649.0
+margin_bottom = 469.0
+mouse_filter = 2
+size_flags_horizontal = 2
+size_flags_vertical = 2
+custom_fonts/font = SubResource( 1 )
+text = "EXIT GAME"
+
+[node name="sol_system" parent="." instance=ExtResource( 2 )]
+
+[node name="players" type="Node2D" parent="."]
+
+[node name="spawn_points2" type="Node2D" parent="."]
+visible = false
+position = Vector2( -1807.85, -684.739 )
+scale = Vector2( 4, 4 )
+
+[node name="0" type="Position2D" parent="spawn_points2"]
+position = Vector2( 72, 72 )
+
+[node name="1" type="Position2D" parent="spawn_points2"]
+position = Vector2( 264, 216 )
+
+[node name="2" type="Position2D" parent="spawn_points2"]
+position = Vector2( 72, 456 )
+
+[node name="3" type="Position2D" parent="spawn_points2"]
+position = Vector2( 360, 552 )
+
+[node name="4" type="Position2D" parent="spawn_points2"]
+position = Vector2( 840, 360 )
+
+[node name="5" type="Position2D" parent="spawn_points2"]
+position = Vector2( 456, 264 )
+
+[node name="6" type="Position2D" parent="spawn_points2"]
+position = Vector2( 696, 264 )
+
+[node name="7" type="Position2D" parent="spawn_points2"]
+position = Vector2( 744, 456 )
+
+[node name="8" type="Position2D" parent="spawn_points2"]
+position = Vector2( 312, 456 )
+
+[node name="9" type="Position2D" parent="spawn_points2"]
+position = Vector2( 696, 72 )
+
+[node name="10" type="Position2D" parent="spawn_points2"]
+position = Vector2( 504, 72 )
+
+[node name="11" type="Position2D" parent="spawn_points2"]
+position = Vector2( 2144.04, 226.818 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+autoplay = true
+script = ExtResource( 4 )
+
+[node name="asteroid" parent="." instance=ExtResource( 5 )]
+position = Vector2( 3019.86, 0.0934372 )
+sleeping = false
+
+[node name="asteroid2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 2889.01, -60.1889 )
+sleeping = false
+
+[node name="asteroid4" parent="." instance=ExtResource( 5 )]
+position = Vector2( 2924.55, 1034.37 )
+sleeping = false
+
+[node name="asteroid5" parent="." instance=ExtResource( 5 )]
+position = Vector2( 2879.53, 567.644 )
+sleeping = false
+
+[node name="asteroid6" parent="." instance=ExtResource( 5 )]
+position = Vector2( 3227.8, 451.555 )
+sleeping = false
+
+[node name="asteroid7" parent="." instance=ExtResource( 5 )]
+position = Vector2( -2724.69, -1447.96 )
+sleeping = false
+
+[node name="asteroid8" parent="." instance=ExtResource( 5 )]
+position = Vector2( -2816.11, 1497.81 )
+sleeping = false
+
+[node name="asteroid9" parent="." instance=ExtResource( 5 )]
+position = Vector2( -1048.64, 2838.64 )
+sleeping = false
+
+[node name="asteroid3" parent="." instance=ExtResource( 5 )]
+position = Vector2( 3077.3, -28.9839 )
+sleeping = false

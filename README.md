@@ -1,1 +1,1 @@
-Apogee Lite
+ApogeeMobile

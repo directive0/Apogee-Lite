@@ -1,0 +1,83 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/VCR_Big.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/VCR_Small.tres" type="DynamicFont" id=2]
+[ext_resource path="res://script/you_died.gd" type="Script" id=3]
+
+[node name="you_died" type="ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.196078 )
+script = ExtResource( 3 )
+
+[node name="window_backing" type="ColorRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -604.0
+margin_top = -383.0
+margin_right = 604.0
+margin_bottom = 383.0
+color = Color( 0.0784314, 0.0784314, 0.0784314, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="window_body" type="VBoxContainer" parent="window_backing"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="window_backing/window_body"]
+margin_right = 1208.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+size_flags_horizontal = 3
+color = Color( 0.984314, 0.784314, 0.00392157, 1 )
+
+[node name="Label" type="Label" parent="window_backing/window_body/ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "WARNING!"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="window_backing/window_body"]
+margin_top = 54.0
+margin_right = 1208.0
+margin_bottom = 697.0
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="window_backing/window_body/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 20.0
+margin_right = -20.0
+margin_bottom = -20.0
+custom_fonts/font = ExtResource( 1 )
+text = "Your ship has been destroyed!"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="settings_okay" type="Button" parent="window_backing/window_body"]
+margin_top = 701.0
+margin_right = 1208.0
+margin_bottom = 766.0
+rect_min_size = Vector2( 0, 65 )
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+text = "Weak"
+[connection signal="pressed" from="window_backing/window_body/settings_okay" to="." method="_on_settings_okay_pressed"]
+[connection signal="pressed" from="window_backing/window_body/settings_okay" to="window_backing" method="_on_settings_okay_pressed"]

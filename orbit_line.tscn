@@ -1,0 +1,6 @@
+[gd_scene format=2]
+
+[node name="orbit" type="Line2D"]
+width = 5.0
+default_color = Color( 0.662745, 0, 1, 0.388235 )
+texture_mode = 193464816

@@ -1,0 +1,266 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://scenes/HUD_reticule.tscn" type="PackedScene" id=1]
+[ext_resource path="res://script/missile.gd" type="Script" id=2]
+[ext_resource path="res://assets/missile.png" type="Texture" id=3]
+[ext_resource path="res://assets/explosion.png" type="Texture" id=4]
+[ext_resource path="res://assets/ring.png" type="Texture" id=5]
+[ext_resource path="res://assets/arrow.png" type="Texture" id=6]
+[ext_resource path="res://assets/crosshair051.png" type="Texture" id=7]
+
+[sub_resource type="Animation" id=1]
+length = 10.0
+step = 0.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 9.86146 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "explode"
+} ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "explode"
+length = 3.0
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("nuke_wave:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 2.46229 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 1.10786, 1.10786 ), Vector2( 0.0725083, 0.0725084 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("nuke_wave:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("blast/CollisionShape2D:shape:radius")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 10.0, 379.685, 0.01 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("ring:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 30, 30 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("ring:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.0196078, 0.811765, 0.968627, 0.568627 ), Color( 0.505882, 0.631373, 1, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("pushback/CollisionShape2D:shape:radius")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 10.0, 2545.0, 0.01 ]
+}
+tracks/6/type = "method"
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 2.96 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "done"
+} ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("pushback:gravity_point")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.2, 0.51 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("pushback:gravity")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.1, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -1024.0, 0.0 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("sprite:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("HUD_reticule:texture")
+tracks/10/interp = 0
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 6 ), ExtResource( 7 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("HUD_reticule:scale")
+tracks/11/interp = 0
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.142073, 0.18048 ), Vector2( 0.2, 0.2 ) ]
+}
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 188.417
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 18.078
+
+[sub_resource type="CircleShape2D" id=5]
+radius = 0.01
+
+[sub_resource type="CircleShape2D" id=6]
+radius = 0.01
+
+[node name="missile" type="RigidBody2D"]
+collision_layer = 6
+collision_mask = 6
+mass = 6.0
+can_sleep = false
+linear_damp = 0.0
+angular_damp = 0.0
+script = ExtResource( 2 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="anim" type="AnimationPlayer" parent="."]
+autoplay = "anim"
+anims/anim = SubResource( 1 )
+anims/explode = SubResource( 2 )
+
+[node name="detonator" type="Area2D" parent="."]
+collision_layer = 15
+collision_mask = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detonator"]
+shape = SubResource( 3 )
+
+[node name="sprite" type="Sprite" parent="."]
+scale = Vector2( 0.353838, 0.353838 )
+texture = ExtResource( 3 )
+region_rect = Rect2( 144, 0, 48, 48 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 4 )
+
+[node name="HUD_reticule" parent="." instance=ExtResource( 1 )]
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 7 )
+
+[node name="nuke_wave" type="Sprite" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+scale = Vector2( 0.0725083, 0.0725084 )
+texture = ExtResource( 4 )
+
+[node name="blast" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="blast"]
+shape = SubResource( 5 )
+
+[node name="ring" type="Sprite" parent="."]
+self_modulate = Color( 0.505882, 0.631373, 1, 0 )
+scale = Vector2( 30, 30 )
+texture = ExtResource( 5 )
+
+[node name="pushback" type="Area2D" parent="."]
+space_override = 3
+gravity_vec = Vector2( 0, -1 )
+gravity = 0.0
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pushback"]
+shape = SubResource( 6 )
+[connection signal="area_entered" from="detonator" to="." method="_on_detonator_area_entered"]
+[connection signal="body_entered" from="detonator" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="detonator" to="." method="_on_Area2D_body_exited"]

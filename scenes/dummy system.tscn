@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/star.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/dynamic_planet.tscn" type="PackedScene" id=2]
+
+[node name="sol_system" type="Node2D"]
+
+[node name="Star" parent="." instance=ExtResource( 1 )]
+position = Vector2( 954.197, 557.838 )
+scale = Vector2( 0.0767174, 0.0767174 )
+
+[node name="planet" parent="Star" instance=ExtResource( 2 )]
+position = Vector2( 4538.76, -1294.66 )
+
+[node name="planet2" parent="Star" instance=ExtResource( 2 )]
+position = Vector2( -6400.84, 457.983 )
+
+[node name="planet3" parent="Star" instance=ExtResource( 2 )]
+position = Vector2( -468.803, 2152.85 )
+
+[node name="planet4" parent="Star" instance=ExtResource( 2 )]
+position = Vector2( -1354.76, -4106.6 )
+
+[node name="planet5" parent="Star" instance=ExtResource( 2 )]
+position = Vector2( 3479.47, 2692.13 )
+
+[node name="planet6" parent="Star" instance=ExtResource( 2 )]
+position = Vector2( -3396.3, -1660.6 )

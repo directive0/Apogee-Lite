@@ -1,0 +1,100 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/square.png" type="Texture" id=1]
+[ext_resource path="res://assets/bookend.png" type="Texture" id=2]
+[ext_resource path="res://script/weapon_select.gd" type="Script" id=3]
+[ext_resource path="res://assets/missile square.png" type="Texture" id=4]
+[ext_resource path="res://assets/station_square.png" type="Texture" id=5]
+
+[node name="weapon_select" type="HBoxContainer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -284.0
+margin_top = -114.0
+margin_right = 263.0
+margin_bottom = -3.0
+rect_min_size = Vector2( 547, 111 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bookend" type="TextureRect" parent="."]
+margin_left = 43.0
+margin_right = 83.0
+margin_bottom = 111.0
+rect_min_size = Vector2( 40, 0 )
+size_flags_vertical = 3
+texture = ExtResource( 2 )
+expand = true
+
+[node name="missile" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0.27451 )
+margin_left = 87.0
+margin_right = 177.0
+margin_bottom = 111.0
+rect_min_size = Vector2( 90, 0 )
+size_flags_vertical = 3
+texture = ExtResource( 4 )
+expand = true
+
+[node name="press_missile" type="TextureButton" parent="missile"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="station" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0.27451 )
+margin_left = 181.0
+margin_right = 271.0
+margin_bottom = 111.0
+rect_min_size = Vector2( 90, 0 )
+size_flags_vertical = 3
+texture = ExtResource( 5 )
+expand = true
+
+[node name="press_station" type="TextureButton" parent="station"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect5" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0.27451 )
+margin_left = 275.0
+margin_right = 365.0
+margin_bottom = 111.0
+rect_min_size = Vector2( 90, 0 )
+size_flags_vertical = 3
+texture = ExtResource( 1 )
+expand = true
+
+[node name="TextureRect6" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0.27451 )
+margin_left = 369.0
+margin_right = 459.0
+margin_bottom = 111.0
+rect_min_size = Vector2( 90, 0 )
+size_flags_vertical = 3
+texture = ExtResource( 1 )
+expand = true
+
+[node name="bookend2" type="TextureRect" parent="."]
+margin_left = 463.0
+margin_right = 503.0
+margin_bottom = 111.0
+rect_min_size = Vector2( 40, 0 )
+size_flags_vertical = 3
+texture = ExtResource( 2 )
+expand = true
+flip_h = true
+[connection signal="pressed" from="missile/press_missile" to="." method="_on_press_missile_pressed"]
+[connection signal="pressed" from="station/press_station" to="." method="_on_press_station_pressed"]

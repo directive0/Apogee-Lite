@@ -1,0 +1,264 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://assets/grid2.png" type="Texture" id=1]
+[ext_resource path="res://sun.tscn" type="PackedScene" id=2]
+[ext_resource path="res://orbit.gd" type="Script" id=3]
+[ext_resource path="res://orbit_line.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/torus.png" type="Texture" id=5]
+[ext_resource path="res://scenes/star.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/dynamic_planet.tscn" type="PackedScene" id=8]
+[ext_resource path="res://script/zoom_hide.gd" type="Script" id=9]
+[ext_resource path="res://scenes/spawn_point.tscn" type="PackedScene" id=10]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 4
+load_path = "res://.import/grid2.png-c05e961df643ccf05f01d99f02caea03.stex"
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 59739.5
+
+[node name="sol_system" type="Node2D"]
+
+[node name="gridplane" type="TextureRect" parent="."]
+modulate = Color( 0.984314, 1, 1, 0.129412 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -78840.3
+margin_top = -44302.7
+margin_right = 78227.7
+margin_bottom = 44050.3
+rect_scale = Vector2( 1, 1.0005 )
+mouse_filter = 2
+texture = ExtResource( 1 )
+stretch_mode = 2
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+zoomset = 10
+
+[node name="gridplane2" type="TextureRect" parent="."]
+visible = false
+modulate = Color( 0.984314, 1, 1, 0.129412 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -81001.4
+margin_top = -43203.0
+margin_right = 76066.6
+margin_bottom = 45150.0
+rect_scale = Vector2( 5, 5 )
+mouse_filter = 2
+texture = SubResource( 1 )
+stretch_mode = 2
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+zoomset = 10
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+input_pickable = false
+space_override = 1
+gravity_point = true
+gravity_distance_scale = 0.001
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 2 )
+
+[node name="Sprite" parent="." instance=ExtResource( 2 )]
+visible = false
+
+[node name="Star" parent="." instance=ExtResource( 7 )]
+scale = Vector2( 0.151505, 0.151505 )
+
+[node name="mercury" type="Node2D" parent="."]
+script = ExtResource( 3 )
+speed = 5.0
+
+[node name="orbit" parent="mercury" instance=ExtResource( 4 )]
+points = PoolVector2Array( -19499.9, -17836.9 )
+
+[node name="planet" parent="mercury" instance=ExtResource( 8 )]
+position = Vector2( 579, 0 )
+scale = Vector2( 0.04, 0.04 )
+object_name = "Mercury"
+
+[node name="gravity" type="Area2D" parent="mercury/planet"]
+visible = false
+space_override = 1
+gravity_point = true
+gravity_distance_scale = 0.001
+gravity = 40.0
+collision_layer = 3
+collision_mask = 3
+
+[node name="surface" type="Area2D" parent="mercury/planet" groups=[
+"planet",
+]]
+visible = false
+collision_layer = 8
+collision_mask = 8
+
+[node name="venus" type="Node2D" parent="."]
+script = ExtResource( 3 )
+speed = 3.5
+
+[node name="orbit" parent="venus" instance=ExtResource( 4 )]
+
+[node name="planet" parent="venus" instance=ExtResource( 8 )]
+position = Vector2( 1082, 0 )
+scale = Vector2( 0.1, 0.1 )
+object_name = "Venus"
+
+[node name="planet" parent="venus/planet" index="3"]
+self_modulate = Color( 0.027451, 0.0392157, 0.0745098, 1 )
+
+[node name="earth" type="Node2D" parent="."]
+script = ExtResource( 3 )
+
+[node name="orbit" parent="earth" instance=ExtResource( 4 )]
+
+[node name="spawn_point" parent="earth" instance=ExtResource( 10 )]
+position = Vector2( 1496, 0 )
+rotation = -1.5522e-08
+scale = Vector2( 0.12, 0.12 )
+
+[node name="spawn_point2" parent="earth" instance=ExtResource( 10 )]
+position = Vector2( 1496, 0 )
+rotation = -1.5522e-08
+scale = Vector2( 0.12, 0.12 )
+
+[node name="spawn_point3" parent="earth" instance=ExtResource( 10 )]
+position = Vector2( 1496, 0 )
+rotation = -1.5522e-08
+scale = Vector2( 0.12, 0.12 )
+
+[node name="spawn_point4" parent="earth" instance=ExtResource( 10 )]
+position = Vector2( 1496, 0 )
+rotation = -1.5522e-08
+scale = Vector2( 0.12, 0.12 )
+
+[node name="spawn_point5" parent="earth" instance=ExtResource( 10 )]
+position = Vector2( 1496, 0 )
+rotation = -1.5522e-08
+scale = Vector2( 0.12, 0.12 )
+
+[node name="spawn_point6" parent="earth" instance=ExtResource( 10 )]
+position = Vector2( 1496, 0 )
+rotation = -1.5522e-08
+scale = Vector2( 0.12, 0.12 )
+
+[node name="planet" parent="earth" instance=ExtResource( 8 )]
+position = Vector2( 1496, 0 )
+scale = Vector2( 0.12, 0.12 )
+object_name = "Earth"
+
+[node name="planet" parent="earth/planet" index="3"]
+self_modulate = Color( 0.109804, 0.117647, 0.768627, 1 )
+
+[node name="mars" type="Node2D" parent="."]
+script = ExtResource( 3 )
+speed = 2.4
+
+[node name="orbit" parent="mars" instance=ExtResource( 4 )]
+
+[node name="planet" parent="mars" instance=ExtResource( 8 )]
+position = Vector2( 2279, 0 )
+scale = Vector2( 0.064, 0.064 )
+object_name = "Mars"
+
+[node name="planet" parent="mars/planet" index="3"]
+self_modulate = Color( 0.172549, 0.0392157, 0.0392157, 1 )
+scale = Vector2( 0.360439, 0.361264 )
+
+[node name="jupiter" type="Node2D" parent="."]
+script = ExtResource( 3 )
+speed = 1.3
+
+[node name="orbit" parent="jupiter" instance=ExtResource( 4 )]
+
+[node name="planet" parent="jupiter" instance=ExtResource( 8 )]
+position = Vector2( 7780, 0 )
+scale = Vector2( 1.3, 1.3 )
+object_name = "Jupiter"
+
+[node name="surface" parent="jupiter/planet" index="0"]
+visible = false
+
+[node name="planet" parent="jupiter/planet" index="3"]
+self_modulate = Color( 0.109804, 0.0666667, 0.0666667, 1 )
+
+[node name="saturn" type="Node2D" parent="."]
+script = ExtResource( 3 )
+speed = 0.9
+
+[node name="orbit" parent="saturn" instance=ExtResource( 4 )]
+
+[node name="planet" parent="saturn" instance=ExtResource( 8 )]
+position = Vector2( 14330, 0 )
+scale = Vector2( 1.1, 1.1 )
+object_name = "Saturn"
+
+[node name="planet" parent="saturn/planet" index="3"]
+self_modulate = Color( 0.0588235, 0.054902, 0.0392157, 1 )
+
+[node name="uranus" type="Node2D" parent="."]
+script = ExtResource( 3 )
+speed = 0.68
+
+[node name="orbit" parent="uranus" instance=ExtResource( 4 )]
+
+[node name="planet" parent="uranus" instance=ExtResource( 8 )]
+position = Vector2( 25650.5, 0 )
+scale = Vector2( 0.497408, 0.5 )
+object_name = "Uranus"
+
+[node name="planet" parent="uranus/planet" index="3"]
+self_modulate = Color( 0.0470588, 0.0862745, 0.0901961, 1 )
+
+[node name="neptune" type="Node2D" parent="."]
+script = ExtResource( 3 )
+speed = 0.54
+
+[node name="orbit" parent="neptune" instance=ExtResource( 4 )]
+
+[node name="planet" parent="neptune" instance=ExtResource( 8 )]
+position = Vector2( 44950, 0 )
+scale = Vector2( 0.5, 0.5 )
+object_name = "Neptune"
+
+[node name="gravity" parent="neptune/planet" index="1"]
+visible = false
+
+[node name="planet" parent="neptune/planet" index="3"]
+self_modulate = Color( 0.0156863, 0.027451, 0.0509804, 1 )
+
+[node name="a_belt" type="Sprite" parent="."]
+self_modulate = Color( 0.435294, 0.435294, 0.435294, 0.145098 )
+scale = Vector2( 14.1589, 14.1589 )
+texture = ExtResource( 5 )
+
+[editable path="Star"]
+
+[editable path="mercury/planet"]
+
+[editable path="venus/planet"]
+
+[editable path="earth/planet"]
+
+[editable path="mars/planet"]
+
+[editable path="jupiter/planet"]
+
+[editable path="saturn/planet"]
+
+[editable path="uranus/planet"]
+
+[editable path="neptune/planet"]

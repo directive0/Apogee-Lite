@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/lobby_of_the_gods.ogg-459333717c63fceae4133c8d01e40157.oggstr"
+
+[deps]
+
+source_file="res://assets/lobby_of_the_gods.ogg"
+dest_files=[ "res://.import/lobby_of_the_gods.ogg-459333717c63fceae4133c8d01e40157.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/plume.png" type="Texture" id=1]
+[ext_resource path="res://ships/dragon.png" type="Texture" id=2]
+
+[node name="hull" type="Node2D"]
+
+[node name="plume" type="Sprite" parent="."]
+position = Vector2( -6.77345, -0.0943654 )
+rotation = 1.5708
+scale = Vector2( 0.055627, 0.055627 )
+texture = ExtResource( 1 )
+offset = Vector2( 1.68595, 190.179 )
+
+[node name="body" type="Sprite" parent="."]
+rotation = 1.5708
+scale = Vector2( 0.020416, 0.020416 )
+texture = ExtResource( 2 )
