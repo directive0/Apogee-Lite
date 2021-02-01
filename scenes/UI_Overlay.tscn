@@ -16,16 +16,16 @@
 [ext_resource path="res://scenes/throttle.tscn" type="PackedScene" id=14]
 [ext_resource path="res://assets/deploy.png" type="Texture" id=15]
 
+[sub_resource type="CircleShape2D" id=1]
+radius = 525.0
+
 [sub_resource type="CircleShape2D" id=2]
 radius = 525.0
 
 [sub_resource type="CircleShape2D" id=3]
 radius = 525.0
 
-[sub_resource type="CircleShape2D" id=4]
-radius = 525.0
-
-[sub_resource type="GDScript" id=1]
+[sub_resource type="GDScript" id=4]
 script/source = "extends VBoxContainer
 export(int, \"velocity\", \"damage\", \"fuel\") var indicator_type
 var subject
@@ -119,21 +119,21 @@ __meta__ = {
 
 [node name="Control3" type="Control" parent="Control/VBoxContainer/topbar/HBoxContainer"]
 margin_right = 737.0
-margin_bottom = 214.0
+margin_bottom = 194.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Control" type="Control" parent="Control/VBoxContainer/topbar/HBoxContainer"]
 margin_left = 741.0
 margin_right = 1478.0
-margin_bottom = 214.0
+margin_bottom = 194.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Control2" type="Control" parent="Control/VBoxContainer/topbar/HBoxContainer"]
 margin_left = 1482.0
 margin_right = 2220.0
-margin_bottom = 214.0
+margin_bottom = 194.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -172,7 +172,10 @@ size_flags_vertical = 3
 [node name="Control" type="Control" parent="Control/VBoxContainer/midbar/control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 460.0
+margin_left = 197.78
+margin_top = 566.017
+margin_right = -85.2205
+margin_bottom = 49.017
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -180,17 +183,51 @@ __meta__ = {
 [node name="ColorRect" type="ColorRect" parent="Control/VBoxContainer/midbar/control/Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.184314, 0.192157, 0, 1 )
+color = Color( 0.98, 0.784, 0, 0.14902 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Label" type="Label" parent="Control/VBoxContainer/midbar/control/Control/ColorRect"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer/midbar/control/Control/ColorRect"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_scale = Vector2( 1.00135, 0.998825 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/midbar/control/Control/ColorRect/VBoxContainer"]
+margin_top = 35.0
+margin_right = 455.0
+margin_bottom = 104.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
 custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.984314, 0.784314, 0.00392157, 1 )
 text = "You are out of fuel. Self Destruct?"
 align = 1
 valign = 1
 autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton" type="TextureButton" parent="Control/VBoxContainer/midbar/control/Control/ColorRect/VBoxContainer"]
+modulate = Color( 0.984314, 0.784314, 0.00392157, 1 )
+margin_top = 143.0
+margin_right = 455.0
+margin_bottom = 283.0
+size_flags_vertical = 3
+texture_normal = ExtResource( 12 )
+expand = true
+
+[node name="Label2" type="Label" parent="Control/VBoxContainer/midbar/control/Control/ColorRect/VBoxContainer/TextureButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Self Destruct"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -228,14 +265,14 @@ texture = ExtResource( 9 )
 [node name="left" type="TouchScreenButton" parent="Control/VBoxContainer/botbar/direction"]
 position = Vector2( 18, 77 )
 scale = Vector2( 0.140475, 0.300912 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 passby_press = true
 action = "move_left"
 
 [node name="right" type="TouchScreenButton" parent="Control/VBoxContainer/botbar/direction"]
 position = Vector2( 305.999, 79.5133 )
 scale = Vector2( 0.14, 0.301 )
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 passby_press = true
 action = "move_right"
 
@@ -243,7 +280,7 @@ action = "move_right"
 position = Vector2( 392.932, 16.8325 )
 rotation = 1.5708
 scale = Vector2( 0.174, 0.301 )
-shape = SubResource( 4 )
+shape = SubResource( 3 )
 passby_press = true
 action = "move_up"
 
@@ -253,12 +290,16 @@ position = Vector2( -1543.18, -74.3125 )
 rotation = 1.5708
 scale = Vector2( 0.174, 0.301 )
 normal = ExtResource( 13 )
-shape = SubResource( 4 )
+shape = SubResource( 3 )
 passby_press = true
 action = "move_up"
 
 [node name="gear button" parent="Control/VBoxContainer/botbar" instance=ExtResource( 11 )]
 modulate = Color( 0.282353, 0.223529, 0, 1 )
+margin_left = 1.78174
+margin_top = 3.5636
+margin_right = 1.78174
+margin_bottom = 3.5636
 
 [node name="Control" type="Control" parent="Control/VBoxContainer/botbar"]
 margin_left = 55.0
@@ -417,7 +458,7 @@ margin_right = 582.0
 margin_bottom = 214.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = SubResource( 1 )
+script = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

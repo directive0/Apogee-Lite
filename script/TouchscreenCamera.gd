@@ -13,7 +13,7 @@ var last_drag_distance = 0
 
 func _physics_process(delta):
 	zoom(delta)
-	print(zoom)
+
 	if target and target_return_enabled and events.size() == 0:
 		position = lerp(position, get_node(target).position, target_return_rate)
 
